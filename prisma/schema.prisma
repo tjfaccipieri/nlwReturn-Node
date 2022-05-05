@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Feedback {
+  // id Int @id @default(autoincrement()) gera um id numerico autoincremental
+  id String @id @default(uuid()) //vai converter o String pro q o banco usar...tipo varchar ou text -- @id pra gerar a primaryKey
+
+  type       String
+  comment    String
+  screenshot String? //deixar a coluna como nulabble
+
+  @@map("feedbacks")
+}
